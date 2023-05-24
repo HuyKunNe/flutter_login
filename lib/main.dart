@@ -68,7 +68,15 @@ class AppHome extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(15.0), // Set the border radius
                   ),
-                  child: const Column(),
+                  child: const Column(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        size: 80.0,
+                        color: Color(0xFF4b4b4b),
+                      )
+                    ],
+                  ),
                 ),
               ],
             )
