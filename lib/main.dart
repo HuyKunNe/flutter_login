@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const App());
@@ -9,12 +10,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          brightness: Brightness.light, primarySwatch: Colors.deepPurple),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      themeMode: ThemeMode.system,
       home: AppHome(),
     );
   }
@@ -26,38 +23,58 @@ class AppHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(".appable/"),
-        leading: const Icon(Icons.ondemand_video),
+        body: Container(
+      alignment: Alignment.center,
+      color: const Color(0xFF10163a),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16, bottom: 60),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                SvgPicture.asset(
+                  'assets/images/logo.svg',
+                  width: 100,
+                  height: 115,
+                ),
+                Transform.translate(
+                  offset: const Offset(0, -16.0),
+                  child: const Text(
+                    'EQSURV Manager',
+                    style: TextStyle(
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        height: 1.5),
+                  ),
+                ),
+                Transform.translate(
+                  offset: const Offset(0, -16.0),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        height: 1.5),
+                  ),
+                ),
+                Container(
+                  height: 264,
+                  width: 300,
+                  // color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.circular(15.0), // Set the border radius
+                  ),
+                  child: const Column(),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add_shopping_cart),
-      ),
-      body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: ListView(
-            children: [
-              Text(
-                "Heading",
-                style: Theme.of(context).textTheme.headline1,
-              ),
-              Text("Sub-heading", style: Theme.of(context).textTheme.subtitle2),
-              Text(
-                "Paragraph",
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              ElevatedButton(
-                  onPressed: () {}, child: const Text("Elevated Button")),
-              OutlinedButton(
-                  onPressed: () {}, child: const Text("Outlined Button")),
-              const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Image(image: AssetImage("assets/images/book.jpg")),
-              )
-            ],
-          )),
-    );
+    ));
   }
 }
-  
